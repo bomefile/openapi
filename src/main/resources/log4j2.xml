@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <Configuration status="warn" monitorInterval="30"> -->
+<Configuration>
+	<Appenders>
+		<RollingFile name="RollingFile" fileName="/var/log/openapi/app.log" filePattern="/var/log/openapi/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+			<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+			<SizeBasedTriggeringPolicy size="200 MB" />
+		</RollingFile>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="debug">
+			<AppenderRef ref="RollingFile" />
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+</Configuration>
